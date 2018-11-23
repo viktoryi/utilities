@@ -27,6 +27,8 @@ public class MovieLeaderboard {
             Elements newsHeadlines = doc.select(".grid_view li");
 
             for (Element element : newsHeadlines) {
+                // sleep one second to avoid the IP being blocked by website
+                Thread.sleep(1000L);
                 Movie movie = new Movie();
                 movie.setRank(Integer.valueOf(element.select(".pic em").html()));
                 movie.setName(element.select(".info .hd a span").first().html());

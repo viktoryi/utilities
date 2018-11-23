@@ -16,7 +16,6 @@ public class MovieDetailCallable implements Callable<Movie> {
     public Movie call() throws Exception {
         Document doc = Jsoup.connect(movie.getUrl()).get();
         StringBuilder sb = new StringBuilder(doc.select("#content h1 .year").html());
-        System.out.println(sb.toString());
         sb.deleteCharAt(sb.length() - 1);
         sb.deleteCharAt(0);
         movie.setReleaseYear(Integer.valueOf(sb.toString()));
